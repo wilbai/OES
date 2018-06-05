@@ -58,24 +58,24 @@
                         </tr>
                         <c:if test="${question.typeId == '1' || question.typeId == '2'}">
                             <tr>
-                                <td class="td_title">A. ${question.optionA}</td>
+                                <td class="td_title">A. <c:out value="${question.optionA}" escapeXml="true"/> </td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td class="td_title">B. ${question.optionB}</td>
+                                <td class="td_title">B. <c:out value="${question.optionB}" escapeXml="true"/></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td class="td_title">C. ${question.optionC}</td>
+                                <td class="td_title">C. <c:out value="${question.optionC}" escapeXml="true"/></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td class="td_title">D. ${question.optionD}</td>
+                                <td class="td_title">D. <c:out value="${question.optionD}" escapeXml="true"/></td>
                                 <td></td>
                             </tr>
                         </c:if>
                         <tr>
-                            <td class="td_title">题目答案: ${question.answer}</td>
+                            <td class="td_title">题目答案: <c:out value="${question.answer}" escapeXml="true"/></td>
                         </tr>
                         <tr>
                             <td class="td_title">所属课程: ${course.courseName}</td>
@@ -89,7 +89,7 @@
                         </tr>
                         <c:if test="${not empty question.remark}">
                             <tr>
-                                <td class="td_title">答案解析: ${question.remark}</td>
+                                <td class="td_title">答案解析: <c:out value="${question.remark}" escapeXml="true"/></td>
                                 <td colspan="5"></td>
                             </tr>
                         </c:if>

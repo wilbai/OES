@@ -74,25 +74,25 @@
                                                 <div class="radio" >
                                                     <label>
                                                         <input type="radio" name="${choice.id}" required  value="A">
-                                                        A. <span style="display: inline-block;">${choice.optionA}</span>
+                                                        A. <span style="display: inline-block;"> <c:out value="${choice.optionA}" escapeXml="true"/> </span>
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
                                                         <input type="radio" name="${choice.id}" required  value="B">
-                                                        B. <span style="display: inline-block;">${choice.optionB}</span>
+                                                        B. <span style="display: inline-block;"><c:out value="${choice.optionB}" escapeXml="true"/></span>
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
                                                         <input type="radio" name="${choice.id}" required value="C">
-                                                        C. <span style="display: inline-block;">${choice.optionC}</span>
+                                                        C. <span style="display: inline-block;"><c:out value="${choice.optionC}" escapeXml="true"/></span>
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
                                                         <input type="radio" name="${choice.id}" required value="D">
-                                                        D. <span style="display: inline-block;">${choice.optionD}</span>
+                                                        D. <span style="display: inline-block;"><c:out value="${choice.optionD}" escapeXml="true"/></span>
                                                     </label>
                                                 </div>
                                                 <hr/>
@@ -114,25 +114,25 @@
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" name="${qMulChoice.id}"  value="A">
-                                                    A. <span style="display: inline-block;">${qMulChoice.optionA}</span>
+                                                    A. <span style="display: inline-block;"><c:out value="${qMulChoice.optionA}" escapeXml="true"/> </span>
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" name="${qMulChoice.id}"  value="B">
-                                                    B. <span style="display: inline-block;">${qMulChoice.optionB}</span>
+                                                    B. <span style="display: inline-block;"><c:out value="${qMulChoice.optionB}" escapeXml="true"/></span>
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" name="${qMulChoice.id}"  value="C">
-                                                    C. <span style="display: inline-block;">${qMulChoice.optionC}</span>
+                                                    C. <span style="display: inline-block;"><c:out value="${qMulChoice.optionC}" escapeXml="true"/></span>
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" name="${qMulChoice.id}"  value="D">
-                                                    D. <span style="display: inline-block;">${qMulChoice.optionD}</span>
+                                                    D. <span style="display: inline-block;"><c:out value="${qMulChoice.optionD}" escapeXml="true"/></span>
                                                 </label>
                                             </div>
                                             <hr/>

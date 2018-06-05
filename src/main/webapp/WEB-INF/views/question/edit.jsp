@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +53,7 @@
 
                         <div class="form-group">
                             <label>答案 <span style="color: #af0000">(单选题答案只填写单个大写字母,多选题答案用英文逗号隔开)</span></label>
-                            <input type="text" name="answer" value="${question.answer}" class="form-control">
+                            <input type="text" name="answer" value="${fn:escapeXml(question.answer)}" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>答案解析 (选填)</label>
