@@ -5,6 +5,7 @@ import com.wil.entity.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by wil on 2018/5/11.
@@ -68,7 +69,7 @@ public interface PaperService {
      * @param qChoiceType
      * @return
      */
-    List<Question> findQuestionsByPaperIdAndType(Integer paperId, Integer qChoiceType);
+    Set<Question> findQuestionsByPaperIdAndType(Integer paperId, Integer qChoiceType);
 
     /**
      * 教师批改试卷

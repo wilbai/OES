@@ -16,10 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpServletRequest;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by wil on 2018/5/11.
@@ -225,18 +222,18 @@ public class PaperServiceImpl implements PaperService {
      * @return
      */
     @Override
-    public List<Question> findQuestionsByPaperIdAndType(Integer paperId, Integer qChoiceType) {
+    public Set<Question> findQuestionsByPaperIdAndType(Integer paperId, Integer qChoiceType) {
         Paper paper = paperMapper.selectByPrimaryKey(paperId);
         String qIds = paper.getQuestionId();
         String[] qIdArray = qIds.split(",");
-        List<Question> questionList = new ArrayList<>();
+        Set<Question> questionSet = new HashSet<>();
         for(String id : qIdArray) {
             Question question = questionMapper.selectByPrimaryKey(Integer.parseInt(id));
             if(qChoiceType.equals(question.getTypeId())) {
-                questionList.add(question);
+                questionSet.add(question);
             }
         }
-        return questionList;
+        return questionSet;
     }
 
     /**
@@ -252,12 +249,12 @@ public class PaperServiceImpl implements PaperService {
         Paper paper = paperMapper.selectByPrimaryKey(paperId);
         PaperForm paperForm = paperFormMapper.selectByPrimaryKey(paper.getPaperFormId());
 
-        List<Question> qChoiceList =findQuestionsByPaperIdAndType(paperId, qChoiceType);
-        List<Question> qMulChoiceList = findQuestionsByPaperIdAndType(paperId, qMulChoiceType);
-        List<Question> qTofList = findQuestionsByPaperIdAndType(paperId, qTofType);
-        List<Question> qFillList = findQuestionsByPaperIdAndType(paperId, qFillType);
-        List<Question> qSaqList = findQuestionsByPaperIdAndType(paperId, qSaqType);
-        List<Question> qProgramList = findQuestionsByPaperIdAndType(paperId, qProgramType);
+        Set<Question> qChoiceList =findQuestionsByPaperIdAndType(paperId, qChoiceType);
+        Set<Question> qMulChoiceList = findQuestionsByPaperIdAndType(paperId, qMulChoiceType);
+        Set<Question> qTofList = findQuestionsByPaperIdAndType(paperId, qTofType);
+        Set<Question> qFillList = findQuestionsByPaperIdAndType(paperId, qFillType);
+        Set<Question> qSaqList = findQuestionsByPaperIdAndType(paperId, qSaqType);
+        Set<Question> qProgramList = findQuestionsByPaperIdAndType(paperId, qProgramType);
 
         Integer qChoiceScore = transStringToInteger(paperForm.getqChoiceScore());
         Integer qMulChoiceScore = transStringToInteger(paperForm.getqMulChoiceScore());

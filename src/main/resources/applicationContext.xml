@@ -61,6 +61,7 @@
         <property name="basePackage" value="com.wil.mapper"/>
     </bean>
 
+    <!--定时任务-->
     <task:annotation-driven scheduler="myScheduler"/>
     <task:scheduler id="myScheduler" pool-size="5"/>
 

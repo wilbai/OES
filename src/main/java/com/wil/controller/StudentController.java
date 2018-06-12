@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by wil on 2018/5/7.
@@ -150,12 +151,12 @@ public class StudentController {
                           Model model) {
 
         Paper paper = paperService.findById(paperId);
-        List<Question> qChoiceList = paperService.findQuestionsByPaperIdAndType(paperId, qChoiceType);
-        List<Question> qMulChoiceList = paperService.findQuestionsByPaperIdAndType(paperId, qMulChoiceType);
-        List<Question> qTofList = paperService.findQuestionsByPaperIdAndType(paperId, qTofType);
-        List<Question> qFillList = paperService.findQuestionsByPaperIdAndType(paperId, qFillType);
-        List<Question> qSaqList = paperService.findQuestionsByPaperIdAndType(paperId, qSaqType);
-        List<Question> qProgramList = paperService.findQuestionsByPaperIdAndType(paperId, qProgramType);
+        Set<Question> qChoiceList = paperService.findQuestionsByPaperIdAndType(paperId, qChoiceType);
+        Set<Question> qMulChoiceList = paperService.findQuestionsByPaperIdAndType(paperId, qMulChoiceType);
+        Set<Question> qTofList = paperService.findQuestionsByPaperIdAndType(paperId, qTofType);
+        Set<Question> qFillList = paperService.findQuestionsByPaperIdAndType(paperId, qFillType);
+        Set<Question> qSaqList = paperService.findQuestionsByPaperIdAndType(paperId, qSaqType);
+        Set<Question> qProgramList = paperService.findQuestionsByPaperIdAndType(paperId, qProgramType);
 
         model.addAttribute("paper", paper);
         model.addAttribute("qChoiceList", qChoiceList);
@@ -231,11 +232,19 @@ public class StudentController {
             return "student/home";
         } else {
             Question question = questionService.findById(Integer.parseInt(questionId));
-            Course course = questionService.findByCourseId(question.getCourseId());
-            model.addAttribute("question", question);
-            model.addAttribute("course", course);
-            return "student/question";
+
+            if(question != null) {
+                Course course = questionService.findByCourseId(question.getCourseId());
+                model.addAttribute("question", question);
+                model.addAttribute("course", course);
+                return "student/question";
+            } else {
+                String message = "题号不存在，请勿乱输！";
+                model.addAttribute("message", message);
+                return "student/home";
+            }
         }
+
 
     }
 
