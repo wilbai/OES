@@ -53,11 +53,7 @@
                     </div>
                 </div>
                 <div class="box-body ">
-                    <c:if test="${!paper.end}">
-                        <div style="font-family: 'Glyphicons Halflings'; font-size: 16px" class="clock text-center"> 距离考试结束: <span class="clock" style="color: #af0000" id="clock">xx分xx秒</span>
-                        </div>
-                    <hr/>
-                    </c:if>
+
                     <table class="table">
                         <tr>
                             <th class="td_title" style="background-color: #e4e4e4">试卷名称:  ${paper.paperName}</th>
@@ -139,26 +135,6 @@
                 window.location.href = "/paper/delete/" + paperId;
             })
         });
-
-        $("#clock").countdown("${paper.endTime}", function (event) {
-            $(this).html(event.strftime('%H小时 %M分钟 %S秒'));
-        }).on("finish.countdown", function () {
-            $.get("/teacher/changePaperState/" + paperId).done(function (data) {
-                if(data.state == "success") {
-                    layer.msg('考试结束，试卷状态被修改', {icon: 1});
-
-                    $(this).delay(2000).queue(function(){
-                        window.location.href = "/paper";
-                    });
-
-                }
-            }).error(function () {
-                layer.msg("服务器异常");
-            });
-
-        });
-
-
 
 
     });

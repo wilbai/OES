@@ -118,4 +118,10 @@ public interface PaperService {
      * @param id
      */
     void changeStateById(Integer id);
+
+    /**
+     * 删除试卷
+     * @param id
+     */
+    void delPaperById(Integer id);
 }

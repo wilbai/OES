@@ -77,6 +77,9 @@
                 <div class="box-footer ">
                     <blockquote class="blockquote-reverse">
                         <p style="color: #2D93CA">祝您开启愉快的一天！</p>
+                        <a class="close" aria-hidden="true">
+                            ${message}
+                        </a>
                     </blockquote>
                 </div>
                 <!-- /.box-footer-->

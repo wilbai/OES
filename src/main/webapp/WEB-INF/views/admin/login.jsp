@@ -29,12 +29,14 @@
 								<label class="input-tips2">密码：</label>
 								<input type="password" name="adminPassword" value="123" id="adminPassword" size="35" class="inputstyle2" />
 							</li>
-							<li style="height: 30px;">
+							<%--<li style="height: 30px;">
 								<label class="input-tips2"></label>
 								<label><input type="checkbox" name="autoLogin" value="1" />七天内自动登陆</label>
-							</li>
+							</li>--%>
 							<li>
-								<input type="submit" tabindex="3" value="立即登录" class="button_blue" />
+								<div class="inputArea">
+									<input type="submit" id="reg" style="margin-top:10px;margin-left:90px;" class="button_blue" value="立即登录" />
+								</div>
 							</li>
 						</ul>
 					</form>

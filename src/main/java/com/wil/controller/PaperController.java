@@ -1,16 +1,15 @@
 package com.wil.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.wil.entity.Course;
-import com.wil.entity.Major;
-import com.wil.entity.Paper;
-import com.wil.entity.PaperForm;
+import com.wil.entity.*;
+import com.wil.exception.ServiceException;
 import com.wil.service.PaperService;
 import com.wil.util.AjaxResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -77,13 +76,22 @@ public class PaperController {
     }
 
     @PostMapping("/newPaper/{paperFormId:\\d+}")
-    public String add(Paper paper,@PathVariable("paperFormId") Integer paperFormId, String major) {
+    public String add(Paper paper, @PathVariable("paperFormId") Integer paperFormId,
+                      String major, RedirectAttributes redirectAttributes,
+                      HttpSession session) {
         paper.setPaperFormId(paperFormId);
         Major majorObj = paperService.findMajorByMajorName(major);
         paper.setMajorId(majorObj.getId());
-        paperService.newPaper(paper);
+        try {
+            paperService.newPaper(paper);
+            return "redirect:/paper/show/" + paper.getId();
+        } catch (ServiceException e) {
+            e.printStackTrace();
+            redirectAttributes.addFlashAttribute("message", e.getMessage());
+            Teacher teacher = (Teacher) session.getAttribute("teacher");
+            return "redirect:/teacher/home/" + teacher.getId();
+        }
 
-        return "redirect:/paper/show/" + paper.getId();
     }
 
     /**
@@ -113,6 +121,12 @@ public class PaperController {
             return new AjaxResult().error(e.getMessage());
         }
 
+    }
+
+    @GetMapping("/delete/{id:\\d+}")
+    public String delPaper(@PathVariable Integer id) {
+        paperService.delPaperById(id);
+        return "redirect:/paper";
     }
 
 

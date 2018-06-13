@@ -72,7 +72,7 @@
                         </div>
                         <div class="form-group">
                             <label>考试专业班级</label>
-                            <input type="text" name="major" class="form-control">
+                            <input type="text" name="major" value="信管1403" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>试卷总分 (默认模版为100分)</label>
@@ -80,7 +80,7 @@
                         </div>
                         <hr/>
                             <div class="form-group">
-                                <label style="color: #af0000">注意:  模拟试卷无需选择时间</label>
+                                <label style="color: #af0000">注意:  正式试卷必选，模拟试卷无需选择时间</label>
                             </div>
                             <div class="form-group form_datetime">
                                 <label>开始时间</label>
@@ -92,7 +92,7 @@
                             </div>
                             <div class="form-group form_datetime">
                                 <label>考试时长 (示例:120分钟)</label>
-                                <input type="text" name="allowTime" class="form-control" >
+                                <input type="text" name="allowTime" value="120分钟" required class="form-control" >
                             </div>
                         <hr/>
 
@@ -168,6 +168,12 @@
                 },
                 major:{
                     required:true
+                },
+                beginTime: {
+                    required:true
+                },
+                endTime: {
+                    required:true
                 }
             },
             messages:{
@@ -182,6 +188,12 @@
                 },
                 major:{
                     required:"请输入考试专业班级"
+                },
+                beginTime: {
+                    required:"请选择开始时间"
+                },
+                endTime: {
+                    required:"请选择结束时间"
                 }
             }
         });

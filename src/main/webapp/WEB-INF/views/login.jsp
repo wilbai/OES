@@ -72,10 +72,10 @@
                             <input type="password" id="studentPassword" name="studentPassword" value="123" maxlength="16" class="inputstyle2" />
                         </div>
                     </li>
-                    <li style="height: 30px;">
+                    <%--<li style="height: 30px;">
                         <label class="input-tips2"></label>
                         <label><input type="checkbox" name="autoLogin" value="1" />七天内自动登陆</label>
-                    </li>
+                    </li>--%>
                     <li>
                         <div class="inputArea">
                             <input type="submit" id="s_reg" style="margin-top:10px;margin-left:90px;" class="button_blue" value="立即登录" />
@@ -109,10 +109,10 @@
                             <input type="password" id="teacherPassword" name="teacherPassword" value="123" maxlength="16" class="inputstyle2" />
                         </div>
                     </li>
-                    <li style="height: 30px;">
+                   <%-- <li style="height: 30px;">
                         <label class="input-tips2"></label>
                         <label><input type="checkbox" name="autoLogin" value="1" />七天内自动登陆</label>
-                    </li>
+                    </li>--%>
                     <li>
                         <div class="inputArea">
                             <input type="submit" id="reg" style="margin-top:10px;margin-left:90px;" class="button_blue" value="立即登录" />

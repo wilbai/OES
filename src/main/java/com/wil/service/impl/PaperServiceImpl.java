@@ -9,6 +9,8 @@ import com.wil.service.PaperService;
 import com.wil.service.QuestionService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.similarity.JaccardSimilarity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +25,8 @@ import java.util.*;
  */
 @Service
 public class PaperServiceImpl implements PaperService {
+
+    private Logger logger = LoggerFactory.getLogger(PaperServiceImpl.class);
 
     @Autowired
     private PaperMapper paperMapper;
@@ -42,6 +46,8 @@ public class PaperServiceImpl implements PaperService {
     private ScoreMapper scoreMapper;
     @Autowired
     private StudentMapper studentMapper;
+    @Autowired
+    private TeacherMapper teacherMapper;
 
     private static final Integer qChoiceType = 1;
     private static final Integer qMulChoiceType = 2;
@@ -334,6 +340,9 @@ public class PaperServiceImpl implements PaperService {
             double f = 0;
 
             for(Question q : qSaqList) {
+
+                wrongIds.add(String.valueOf(q.getId()));
+
                 String res = request.getParameter(String.valueOf(q.getId()));
                 String answer = q.getAnswer();
 
@@ -488,6 +497,45 @@ public class PaperServiceImpl implements PaperService {
         paperMapper.updateByPrimaryKeySelective(paper);
     }
 
+    /**
+     * 删除试卷,删除与试卷有关的表中的数据：score,stu_answer_record
+     * @param id
+     */
+    @Override
+    @Transactional
+    public void delPaperById(Integer id) {
+        Paper paper = paperMapper.selectByPrimaryKey(id);
+
+
+        if(paper != null) {
+            Teacher teacher = teacherMapper.selectByPrimaryKey(paper.getTeacherId());
+
+            //删除score表中paperId为传入参数的对象
+            ScoreExample scoreExample = new ScoreExample();
+            scoreExample.createCriteria().andPaperIdEqualTo(id);
+            List<Score> scoreList = scoreMapper.selectByExample(scoreExample);
+
+            for(Score s : scoreList) {
+                scoreMapper.deleteByPrimaryKey(s.getId());
+
+            }
+
+            //删除stu_answer_record
+            StuAnswerRecordExample stuAnswerRecordExample = new StuAnswerRecordExample();
+            stuAnswerRecordExample.createCriteria().andPaperIdEqualTo(id);
+            List<StuAnswerRecord> stuAnswerRecordList = stuAnswerRecordMapper.selectByExample(stuAnswerRecordExample);
+
+            for(StuAnswerRecord answerRecord : stuAnswerRecordList) {
+                stuAnswerRecordMapper.deleteByPrimaryKey(answerRecord.getId());
+            }
+
+            //删除试卷
+            paperMapper.deleteByPrimaryKey(id);
+            logger.info("教师：{} 删除了试卷：{}",teacher.getName(), paper.getPaperName());
+
+        }
+    }
+
 
     private void getPaperQuestionIdList(String varQuestionTypeNum,
                                         List<Integer> paperQuestionIdList,
@@ -507,14 +555,18 @@ public class PaperServiceImpl implements PaperService {
      * @param num 题目数量
      * @return
      */
-    private List<Integer> getRandomIdList(List<Integer> all, Integer num) {
+    private List<Integer> getRandomIdList(List<Integer> all, Integer num) throws ServiceException {
         Random random = new Random();
         List<Integer> result = new ArrayList<>();
         int index = 0;
         for(int i = 0; i < num; i++) {
-            index = random.nextInt(all.size() - 1);
-            result.add(all.get(index));
-            all.remove(index);
+            try {
+                index = random.nextInt(all.size() - 1);
+                result.add(all.get(index));
+                all.remove(index);
+            } catch (Exception e) {
+                throw new ServiceException("试题数量不足，组卷失败！");
+            }
         }
         return result;
     }
