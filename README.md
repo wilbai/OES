@@ -1,6 +1,6 @@
 # OES 一款PC端的在线考试系统
 ## 概述
-  这个项目是我的本科毕设作品,完全的个人项目，在工作几个月后，突然觉得应该好好写一写readme。该考试系统的用户类型有三种：教师、学生、管理员。
+  这个项目是我的本科毕设作品，完全的个人项目，在工作几个月后，突然觉得应该好好写一写readme。该考试系统的用户类型有三种：教师、学生、管理员。
   系统实现了一张试卷从产生到被做再到被评分的一系列过程。代码中注释十分详细，适合同样在做该课题的毕业生参考。
 ## 技术栈
   * 前端：AdminLTE bootstrap jQuery ajax jsp  
@@ -28,3 +28,35 @@
   * 系统维护：查看系统日志，接收用户问题反馈。
   * 系统公告管理：在必要时发布系统公告，如系统版本更新等
   ## 部分功能展示
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片1.png)
+  
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片2.png)
+  
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片3.png)
+  
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片4.png)
+  
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片7.png)
+  
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片8.png)
+  
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片9.png)
+  
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片10.png)
+  
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片11.png)
+  
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片12.png)
+  ***
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片14.png)
+  
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片15.png)
+  
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片16.png)
+  
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片17.png)
+  
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片18.png)
+  
+  
+  
