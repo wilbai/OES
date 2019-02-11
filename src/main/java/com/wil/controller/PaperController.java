@@ -123,6 +123,11 @@ public class PaperController {
 
     }
 
+    /**
+     * 级联删除试卷、分数、答案记录
+     * @param id
+     * @return
+     */
     @GetMapping("/delete/{id:\\d+}")
     public String delPaper(@PathVariable Integer id) {
         paperService.delPaperById(id);

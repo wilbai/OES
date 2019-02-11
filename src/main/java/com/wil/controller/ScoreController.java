@@ -82,11 +82,16 @@ public class ScoreController {
         return new AjaxResult().successWithData(scoreCount);
     }
 
+
     @GetMapping("/student/chart")
     public String studentChart() {
         return "student/scoreChart";
     }
 
+    /**
+     *雷达图 成绩与平均成绩比较
+     * @return
+     */
     @PostMapping("/student/chart/{id:\\d+}")
     @ResponseBody
     public AjaxResult stuChart(@PathVariable Integer id) {
@@ -96,6 +101,11 @@ public class ScoreController {
         return new AjaxResult().successWithData(aveAndMyScoreList);
     }
 
+    /**
+     * 统计该学生成绩分布
+     * @param session
+     * @return
+     */
     @GetMapping("/student/chart2")
     @ResponseBody
     public AjaxResult stuSelfChart(HttpSession session) {
