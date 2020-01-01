@@ -86,7 +86,7 @@ public class AdminController {
     @ResponseBody
     public AjaxResult delAnnounce(String id) {
         adminService.delAnnounceById(Integer.parseInt(id));
-        return new AjaxResult().success();
+        return AjaxResult.success();
     }
 
     /**
@@ -98,7 +98,7 @@ public class AdminController {
     @ResponseBody
     public AjaxResult delAnnounces(String[] ids) {
         adminService.delAnnounces(ids);
-        return new AjaxResult().success();
+        return AjaxResult.success();
     }
 
 

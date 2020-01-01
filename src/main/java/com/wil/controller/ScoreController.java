@@ -50,7 +50,7 @@ public class ScoreController {
     @ResponseBody
     public AjaxResult courseChart(@PathVariable Integer id) {
         List<Map<String, Object>> scoreCount = scoreService.countByCourse(String.valueOf(id));
-        return new AjaxResult().successWithData(scoreCount);
+        return AjaxResult.successWithData(scoreCount);
     }
 
     @GetMapping("/major")
@@ -79,7 +79,7 @@ public class ScoreController {
     @ResponseBody
     public AjaxResult majorChart(@PathVariable Integer id, String majorName) {
         List<Map<String, Object>> scoreCount = scoreService.countByMajorAndCourse(majorName, id);
-        return new AjaxResult().successWithData(scoreCount);
+        return AjaxResult.successWithData(scoreCount);
     }
 
 
@@ -98,7 +98,7 @@ public class ScoreController {
 
         List<Map<String, Object>> aveAndMyScoreList = scoreService.averageScore(id);
 
-        return new AjaxResult().successWithData(aveAndMyScoreList);
+        return AjaxResult.successWithData(aveAndMyScoreList);
     }
 
     /**
@@ -110,7 +110,7 @@ public class ScoreController {
     @ResponseBody
     public AjaxResult stuSelfChart(HttpSession session) {
         List<Map<String, Object>> everyScoreList = scoreService.countByLevel(session.getAttribute("studentId"));
-        return new AjaxResult().successWithData(everyScoreList);
+        return AjaxResult.successWithData(everyScoreList);
     }
 
 

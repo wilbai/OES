@@ -116,9 +116,9 @@ public class PaperController {
     public AjaxResult delPaperForm(@PathVariable Integer id) {
         try {
             paperService.delPaperFormById(id);
-            return new AjaxResult().success();
+            return AjaxResult.success();
         } catch (Exception e) {
-            return new AjaxResult().error(e.getMessage());
+            return AjaxResult.error(e.getMessage());
         }
 
     }

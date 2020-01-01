@@ -52,7 +52,7 @@ public class DiskController {
     public AjaxResult saveFolder(Disk disk) {
         diskService.saveNewFolder(disk);
         List<Disk> diskList = diskService.findDiskListByPId(disk.getpId());
-        return new AjaxResult().successWithData(diskList);
+        return AjaxResult.successWithData(diskList);
     }
 
     /**
@@ -69,9 +69,8 @@ public class DiskController {
                              @RequestParam("file") MultipartFile file) throws IOException {
 
         if(file.isEmpty()) {
-            return new AjaxResult().error("文件为空");
+            return AjaxResult.error("文件为空");
         }
-
         InputStream inputStream = file.getInputStream();
         long size = file.getSize();
         String fileName = file.getOriginalFilename();
@@ -79,7 +78,7 @@ public class DiskController {
         diskService.saveNewFile(inputStream, size, fileName, pId, (Integer) session.getAttribute("teacherId"));
 
         List<Disk> diskList = diskService.findDiskListByPId(pId);
-        return new AjaxResult().successWithData(diskList);
+        return AjaxResult.successWithData(diskList);
 
     }
 
@@ -102,7 +101,7 @@ public class DiskController {
             if(StringUtils.isNotEmpty(fileName)) {
                 response.setContentType("application/octet-stream");
                 fileName = new String(fileName.getBytes("UTF-8"), "ISO8859-1");
-                response.setHeader("Content-Disposition","attachment; filename=\""+fileName+"\"");
+                response.setHeader("Content-Disposition","attachment; filename="+fileName+"");
             }
 
             IOUtils.copy(inputStream, outputStream);

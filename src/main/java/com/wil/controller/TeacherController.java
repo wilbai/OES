@@ -87,7 +87,7 @@ public class TeacherController {
     @ResponseBody
     public AjaxResult newCourse(String courseName, String teacherId) {
         teacherService.saveCourse(courseName, Integer.parseInt(teacherId));
-        return new AjaxResult().success();
+        return AjaxResult.success();
     }
 
     /**
@@ -100,9 +100,9 @@ public class TeacherController {
     public AjaxResult delCourse(@PathVariable Integer id) {
         try {
             teacherService.delCourseById(id);
-            return new AjaxResult().success();
+            return AjaxResult.success();
         } catch (Exception e) {
-            return new AjaxResult().error(e.getMessage());
+            return AjaxResult.error(e.getMessage());
         }
 
     }
@@ -140,7 +140,7 @@ public class TeacherController {
     public AjaxResult editExam(@PathVariable Integer id, String beginTime, String endTime, String allowTime) {
 
         paperService.editPaperById(id, beginTime, endTime, allowTime);
-        return new AjaxResult().success();
+        return AjaxResult.success();
     }
 
     /**
@@ -187,7 +187,7 @@ public class TeacherController {
     @ResponseBody
     public AjaxResult changPaperState(@PathVariable Integer id) {
         paperService.changeStateById(id);
-        return new AjaxResult().success();
+        return AjaxResult.success();
     }
 
 
