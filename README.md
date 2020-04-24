@@ -1,3 +1,11 @@
+<p align="center">
+   <img src="https://img.shields.io/badge/java-8-orange" alt="Build Status">
+   <img src="https://img.shields.io/badge/tomcat-8-blue" alt="Coverage Status">
+   <img src="https://img.shields.io/badge/Spring-4.3.9.RELEASE-green.svg" alt="Downloads">
+   <img src="https://img.shields.io/badge/mysql-5.6-red" alt="Coverage Status">
+   <img src="https://img.shields.io/badge/idea-anyversion-green" alt="Coverage Status">
+ </p>  
+ 
 # OES 一款PC端的在线考试系统
 ## 概述
   这个项目是我的本科毕设作品，完全的个人项目，在工作几个月后，突然觉得应该好好写一写readme。该考试系统的用户类型有三种：教师、学生、管理员。
@@ -27,6 +35,32 @@
   * 基本数据管理：对系统内置数据的录入。
   * 系统维护：查看系统日志，接收用户问题反馈。
   * 系统公告管理：在必要时发布系统公告，如系统版本更新等
+  ## 启动说明
+  一、 操作环境
+  1. JDK:1.8
+  2. Mysql:5.6及以上
+  3. 编辑器:idea任意版本
+  
+  二、 初始化数据库
+  1. 创建数据库
+  2. 执行/resources/sql/init.sql
+  
+  三、 idea启动配置
+  1. 修改配置文件/resources/config.properties中数据库名、用户名称、密码。
+  2. 点击idea右上角锤子旁边的下拉选择，选择Edit Configuration。
+  3. 配置一个maven启动，command line设置命令： clean tomcat7:run。
+  4. 点击旁边的绿色三小按钮运行即可。
+  
+  ##### 启动图示
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片19.png)
+  
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片20.png)
+  
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片21.png)
+  
+  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片22.png)
+  
+  
   ## 部分功能展示
   ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片1.png)
   
@@ -57,6 +91,12 @@
   ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片17.png)
   
   ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片18.png)
+  
+  ## 后记
+  可能当时毕设写完这个项目我还觉得自己挺厉害的，然后工作快两年的时候再看就发现很多技术都已经过时了，比如说ssm框架，
+  现在大部分都是springboot，jsp技术我已经都不会了，现在更喜欢vue，前后端分离。然后数据库的设计现在看来也是有点问题的。
+  但是如果你也是在做毕设，那么你还是可以参考一下，按照步骤启动肯定是可以的，但你如果是eclipse，或者你有一些其他的骚操作，
+  那么你要百度一下了，七牛云的文件服务你应该是用不了的，我改了秘钥。
   
   
   
