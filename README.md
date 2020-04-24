@@ -52,13 +52,13 @@
   4. 点击旁边的绿色三小按钮运行即可。
   
   ##### 启动图示
-  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片19.png)
+  ![Image text](src/main/webapp/static/eg-img/图片19.png)
   
-  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片20.png)
+  ![Image text](src/main/webapp/static/eg-img/图片20.png)
   
-  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片21.png)
+  ![Image text](src/main/webapp/static/eg-img/图片21.png)
   
-  ![Image text](https://github.com/wilbai/OES/raw/master/src/main/webapp/static/eg-img/图片22.png)
+  ![Image text](src/main/webapp/static/eg-img/图片22.png)
   
   
   ## 部分功能展示
